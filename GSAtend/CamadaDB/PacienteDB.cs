@@ -16,25 +16,34 @@ namespace GSAtend.CamadaDB
     {
         public void Add(Paciente paciente)
         {
-            string sql = "Insert into Pacientes " +
-                           "(CPF, Nome, DataNascimento , Sexo) " +
-                           "values (@CPF, @Nome, @DataNascimento, @Sexo) ";                         
-            try
+            List<Paciente> pacientes = GetPacientesByCPF(paciente.CPF);
+            if (pacientes.Count == 0)
             {
-                using (IDbConnection db = Conection.getConexao())
+                string sql = "Insert into Pacientes " +
+                               "(CPF, Nome, DataNascimento , Sexo) " +
+                               "values (@CPF, @Nome, @DataNascimento, @Sexo) ";
+                try
                 {
-                    var affectedRows = db.Execute(sql, new
+                    using (IDbConnection db = Conection.getConexao())
                     {
-                        Nome = paciente.Nome,
-                        DataNascimento = paciente.DataNascimento,
-                        Sexo = paciente.Sexo,
-                        CPF = paciente.CPF
-                    });
+                        var affectedRows = db.Execute(sql, new
+                        {
+                            Nome = paciente.Nome,
+                            DataNascimento = paciente.DataNascimento,
+                            Sexo = paciente.Sexo,
+                            CPF = paciente.CPF
+                        });
+                    }
+                    MessageBox.Show("Registro Inserido com sucesso!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao tentar Inserir Paciente!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Erro ao tentar Inserir Paciente!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Update(paciente);
             }
         }
 
@@ -108,6 +117,7 @@ namespace GSAtend.CamadaDB
                         CPF = paciente.CPF
                     });
                 }
+                MessageBox.Show("Registro Atualizado com sucesso!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
