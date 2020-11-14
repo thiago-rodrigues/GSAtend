@@ -16,12 +16,43 @@ namespace GSAtend.CamadaDB
     {
         public void Add(Paciente paciente)
         {
-            throw new NotImplementedException();
+            string sql = "Insert into Pacientes " +
+                           "(CPF, Nome, DataNascimento , Sexo) " +
+                           "values (@CPF, @Nome, @DataNascimento, @Sexo) ";                         
+            try
+            {
+                using (IDbConnection db = Conection.getConexao())
+                {
+                    var affectedRows = db.Execute(sql, new
+                    {
+                        Nome = paciente.Nome,
+                        DataNascimento = paciente.DataNascimento,
+                        Sexo = paciente.Sexo,
+                        CPF = paciente.CPF
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar Inserir Paciente!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void Delete(Paciente paciente)
         {
-            throw new NotImplementedException();
+            string sql = "Delete Pacientes " +                           
+                         "Where CPF=@CPF ;";
+            try
+            {
+                using (IDbConnection db = Conection.getConexao())
+                {
+                    var affectedRows = db.Execute(sql, new {CPF = paciente.CPF});
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar Atualizar Paciente!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public List<Paciente> GetAllPacientes()
