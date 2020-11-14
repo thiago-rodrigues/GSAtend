@@ -44,7 +44,20 @@ namespace GSAtend.CamadaDB
 
         public List<Paciente> GetPacientesByCPF(string CPF)
         {
-            throw new NotImplementedException();
+            string sql = "Select * From Pacientes where CPF=@pacienteCPF ";
+            List<Paciente> paciente = new List<Paciente>();
+            try
+            {
+                using (IDbConnection db = Conection.getConexao())
+                {
+                    return paciente = db.Query<Paciente>(sql, new { pacienteCPF = CPF }).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar retornar Pacientes!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return paciente;
         }
 
         public void Update(Paciente paciente)
