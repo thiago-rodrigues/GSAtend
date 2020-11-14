@@ -45,7 +45,20 @@ namespace GSAtend.CamadaDB
 
         public void Delete(Atendimento atendimento)
         {
-            throw new NotImplementedException();
+            string sql = "Delete Atendimentos " +
+                         "Where Id=@IdAtend ;";
+            try
+            {
+                using (IDbConnection db = Conection.getConexao())
+                {
+                    db.Execute(sql, new { IdAtend = atendimento.Id });
+                }
+                MessageBox.Show("Registro Apagado com sucesso!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar apagar Atendimento!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public List<Atendimento> GetAllPacientes()
