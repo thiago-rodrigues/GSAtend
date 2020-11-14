@@ -7,8 +7,7 @@ using System.Windows.Forms;
 namespace GSAtend.CamadaDB
 {
     interface IAtendimento
-    {
-        public List<Atendimento> GetAllPacientes();
+    {        
         public List<Atendimento> GetAtendimentosByCPF(string CPF);
         public List<Atendimento> GetAtendimentosByID(int Id);
         public void Add(Atendimento atendimento);
