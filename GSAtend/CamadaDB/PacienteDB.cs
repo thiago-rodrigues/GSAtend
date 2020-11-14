@@ -57,6 +57,7 @@ namespace GSAtend.CamadaDB
                 {
                     var affectedRows = db.Execute(sql, new {CPF = paciente.CPF});
                 }
+                MessageBox.Show("Registro Apagado com sucesso!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -127,12 +128,12 @@ namespace GSAtend.CamadaDB
 
         public void PreencheGrid(DataGridView dataGrid)
         {
-            string sql = "Select * From Pacientes;";
-            List<Paciente> paciente = new List<Paciente>();
+            string sql = "Select * From Pacientes;";            
             try
             {
                 using (IDbConnection db = Conection.getConexao())
                 {
+                    dataGrid.Rows.Clear();
                     var datareader = db.ExecuteReader(sql);
                     while (datareader.Read())
                     {
