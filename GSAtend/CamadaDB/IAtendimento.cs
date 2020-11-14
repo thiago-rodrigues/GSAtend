@@ -10,6 +10,7 @@ namespace GSAtend.CamadaDB
     {
         public List<Atendimento> GetAllPacientes();
         public List<Atendimento> GetAtendimentosByCPF(string CPF);
+        public List<Atendimento> GetAtendimentosByID(int Id);
         public void Add(Atendimento atendimento);
         public void Update(Atendimento atendimento);
         public void Delete(Atendimento atendimento);
