@@ -3,6 +3,7 @@ using GSAtend.CamadaNegocio;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -26,7 +27,7 @@ namespace GSAtend.CamadaDB
                         {
                             DataAtendimento = atendimento.DataAtendimento,
                             Descricao = atendimento.DescricaoAtendimento,
-                            CPF = atendimento.Paciente
+                            CPF = atendimento.Paciente.CPF
                         }); 
                     }
                     MessageBox.Show("Registro Inserido com sucesso!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -59,7 +60,20 @@ namespace GSAtend.CamadaDB
 
         public List<Atendimento> GetAtendimentosByID(int Id)
         {
-            throw new NotImplementedException();
+            string sql = "Select * From Atendimentos where Id=@IdAtend ";
+            List<Atendimento> atendimentos = new List<Atendimento>();
+            try
+            {
+                using (IDbConnection db = Conection.getConexao())
+                {
+                    return atendimentos = db.Query<Atendimento>(sql, new {IdAtend = Id}).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar retornar Atendimento!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return atendimentos;
         }
 
         public void PreencheGrid(DataGridView dataGrid)
