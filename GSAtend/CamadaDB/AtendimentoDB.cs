@@ -60,15 +60,24 @@ namespace GSAtend.CamadaDB
                 MessageBox.Show("Erro ao tentar apagar Atendimento!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        public List<Atendimento> GetAllPacientes()
-        {
-            throw new NotImplementedException();
-        }
+           
 
         public List<Atendimento> GetAtendimentosByCPF(string CPF)
         {
-            throw new NotImplementedException();
+            string sql = "Select * From Atendimentos where CPF=@pacienteCPF ";
+            List<Atendimento> atendimento = new List<Atendimento>();
+            try
+            {
+                using (IDbConnection db = Conection.getConexao())
+                {
+                    return atendimento = db.Query<Atendimento>(sql, new { pacienteCPF = CPF }).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar retornar Atendimentos!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return atendimento;
         }
 
         public List<Atendimento> GetAtendimentosByID(int Id)
