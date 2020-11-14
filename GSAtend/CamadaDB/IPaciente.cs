@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GSAtend.CamadaDB
 {
@@ -13,5 +14,6 @@ namespace GSAtend.CamadaDB
         public void Add(Paciente paciente);
         public void Update(Paciente paciente);
         public void Delete(Paciente paciente);
+        public void PreencheGrid(DataGridView dataGrid);
     }
 }

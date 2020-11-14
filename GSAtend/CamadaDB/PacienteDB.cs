@@ -124,5 +124,35 @@ namespace GSAtend.CamadaDB
                 MessageBox.Show("Erro ao tentar Atualizar Paciente!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public void PreencheGrid(DataGridView dataGrid)
+        {
+            string sql = "Select * From Pacientes;";
+            List<Paciente> paciente = new List<Paciente>();
+            try
+            {
+                using (IDbConnection db = Conection.getConexao())
+                {
+                    var datareader = db.ExecuteReader(sql);
+                    while (datareader.Read())
+                    {
+                        string[] MyArray = new string[4];
+                        MyArray[0] = datareader.GetString(datareader.GetOrdinal("CPF"));
+                        MyArray[1] = datareader.GetString(datareader.GetOrdinal("Nome"));
+                        MyArray[2] = datareader.GetDateTime(datareader.GetOrdinal("DataNascimento")).ToShortDateString();
+                        MyArray[3] = datareader.GetString(datareader.GetOrdinal("Sexo"));
+
+                        dataGrid.Rows.Add();
+                        dataGrid.Rows[dataGrid.RowCount - 1].SetValues(MyArray);
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar retornar Pacientes!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
     }
 }
