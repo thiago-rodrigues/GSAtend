@@ -93,7 +93,26 @@ namespace GSAtend.CamadaDB
 
         public void Update(Paciente paciente)
         {
-            throw new NotImplementedException();
+            string sql = "Update Pacientes " +
+                            "Set Nome=@Nome, DataNascimento=@DataNascimento, Sexo=@Sexo " +
+                         "Where CPF=@CPF ;";
+            try
+            {
+                using (IDbConnection db = Conection.getConexao())
+                {
+                    var affectedRows = db.Execute(sql, new
+                    {
+                        Nome = paciente.Nome,
+                        DataNascimento = paciente.DataNascimento,
+                        Sexo = paciente.Sexo,
+                        CPF = paciente.CPF
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar Atualizar Paciente!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
