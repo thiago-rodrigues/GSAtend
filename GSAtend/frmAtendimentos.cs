@@ -79,5 +79,24 @@ namespace GSAtend
             dgAtendimentos.Rows.Clear();
             txtcpf.Focus();
         }
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if ((txtId.Text != "") && txtcpf.Text != "   .   .   -")
+            {
+                if (MessageBox.Show("Tem certeza que deseja excluir este registro???", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    atendimento.Id = Convert.ToInt32(txtId.Text);
+                    atendimentoDB.Delete(atendimento);
+                    atendimentoDB.PreencheGrid(dgAtendimentos, Cpf.RemoveMask(txtcpf.Text));
+                    txtId.Text = "";
+                    txtdescricao.Text = "";
+                }
+            }
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
