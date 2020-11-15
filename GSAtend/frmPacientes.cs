@@ -78,5 +78,33 @@ namespace GSAtend
             }
         }
 
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if ((txtcpf.Text != "   .   .   -"))
+            {
+                if (MessageBox.Show("Tem certeza que deseja excluir este registro???", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    paciente.CPF = Cpf.RemoveMask(txtcpf.Text);
+                    pacienteDB.Delete(paciente);
+                    pacienteDB.PreencheGrid(dgMedicos);
+                }
+            }
+        }
+
+        private void frmPacientes_Load(object sender, EventArgs e)
+        {
+            dgMedicos.Columns.Add("CPF", "CPF:");
+            dgMedicos.Columns.Add("Nome", "Nome:");
+            dgMedicos.Columns.Add("DataNascimento", "Dt.Nasc:");
+            dgMedicos.Columns.Add("Sexo", "Sexo:");
+
+            dgMedicos.Columns[0].Width = 80;
+            dgMedicos.Columns[1].Width = 320;
+            dgMedicos.Columns[2].Width = 100;
+            dgMedicos.Columns[3].Width = 80;
+
+            pacienteDB.PreencheGrid(dgMedicos);
+        }
+
     }
 }
