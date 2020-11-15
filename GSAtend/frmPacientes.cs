@@ -43,5 +43,40 @@ namespace GSAtend
             }
         }
 
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            txtcpf.Text = "";
+            txtnome.Text = "";
+            dtpdata.Value = DateTime.Today;
+            cbSexo.SelectedIndex = -1;
+            txtcpf.Focus();
+        }
+
+        private void txtcpf_Leave(object sender, EventArgs e)
+        {
+            if (!Cpf.IsValid(txtcpf.Text) && (txtcpf.Text != "   .   .   -"))
+            {
+                txtcpf.Text = "";
+                MessageBox.Show("CPF Inválido!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtcpf.Focus();
+            }
+            else
+            {
+                List<Paciente> pacientes = pacienteDB.GetPacientesByCPF(Cpf.RemoveMask(txtcpf.Text));
+                if (pacientes.Count > 0)
+                {
+                    txtnome.Text = pacientes[0].Nome;
+                    dtpdata.Value = pacientes[0].DataNascimento;
+                    cbSexo.Text = pacientes[0].Sexo;
+                }
+                else
+                {
+                    txtnome.Text = "";
+                    dtpdata.Value = DateTime.Today;
+                    cbSexo.SelectedIndex = -1;
+                }
+            }
+        }
+
     }
 }
