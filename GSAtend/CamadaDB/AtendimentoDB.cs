@@ -98,15 +98,38 @@ namespace GSAtend.CamadaDB
             return atendimentos;
         }
 
-        public void PreencheGrid(DataGridView dataGrid)
+        public void PreencheGrid(DataGridView dataGrid, string cpf)
         {
-            throw new NotImplementedException();
+            string sql = "Select * From Atendimentos where CPF=@pacienteCPF ";
+            List<Atendimento> atendimento = new List<Atendimento>();
+            try
+            {
+                using (IDbConnection db = Conection.getConexao())
+                {
+                    dataGrid.Rows.Clear();
+                    var datareader = db.ExecuteReader(sql, new {pacienteCPF = cpf});
+                    while (datareader.Read())
+                    {
+                        string[] MyArray = new string[3];
+                        MyArray[0] = datareader.GetInt32(datareader.GetOrdinal("Id")).ToString();                        
+                        MyArray[1] = datareader.GetDateTime(datareader.GetOrdinal("DataAtendimento")).ToShortDateString();
+                        MyArray[2] = datareader.GetString(datareader.GetOrdinal("Descricao"));
+
+                        dataGrid.Rows.Add();
+                        dataGrid.Rows[dataGrid.RowCount - 1].SetValues(MyArray);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar retornar Atendimentos!\n" + ex, "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
 
         public void Update(Atendimento atendimento)
         {
             string sql = "Update Atendimentos " +
-                            "Set DataAtendimento=@DataNascimento, Descricao=@Descricao, CPF=@CPF " +
+                            "Set DataAtendimento=@DataAtendimento, Descricao=@Descricao, CPF=@CPF " +
                          "Where Id=@Id ;";
             try
             {

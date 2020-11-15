@@ -13,6 +13,6 @@ namespace GSAtend.CamadaDB
         public void Add(Atendimento atendimento);
         public void Update(Atendimento atendimento);
         public void Delete(Atendimento atendimento);
-        public void PreencheGrid(DataGridView dataGrid);
+        public void PreencheGrid(DataGridView dataGrid, string cpf);
     }
 }
