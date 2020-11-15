@@ -98,5 +98,31 @@ namespace GSAtend
         {
             this.Close();
         }
+
+        private void frmAtendimentos_Load(object sender, EventArgs e)
+        {
+            dgAtendimentos.Columns.Add("Id", "ID:");
+            dgAtendimentos.Columns.Add("DataAtendimento", "Dt.Atend:");
+            dgAtendimentos.Columns.Add("Descricao", "Descricao:");
+
+            dgAtendimentos.Columns[0].Width = 80;
+            dgAtendimentos.Columns[1].Width = 100;
+            dgAtendimentos.Columns[2].Width = 285;
+
+        }
+
+        private void dgAtendimentos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgAtendimentos.CurrentRow.Index < 0)
+            {
+
+            }
+            else
+            {
+                txtId.Text = dgAtendimentos[0, dgAtendimentos.CurrentRow.Index].Value.ToString();
+                dtData.Text = dgAtendimentos[1, dgAtendimentos.CurrentRow.Index].Value.ToString();
+                txtdescricao.Text = dgAtendimentos[2, dgAtendimentos.CurrentRow.Index].Value.ToString();
+            }
+        }
     }
 }
