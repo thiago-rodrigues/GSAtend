@@ -34,7 +34,7 @@ namespace GSAtend
                 paciente.DataNascimento = Convert.ToDateTime(dtpdata.Text);
                 paciente.Sexo = cbSexo.Text;
                 pacienteDB.Add(paciente);
-                pacienteDB.PreencheGrid(dgMedicos);
+                pacienteDB.PreencheGrid(dgPacientes);
                 btnNovo_Click(sender, e);
             }
             else
@@ -86,38 +86,38 @@ namespace GSAtend
                 {
                     paciente.CPF = Cpf.RemoveMask(txtcpf.Text);
                     pacienteDB.Delete(paciente);
-                    pacienteDB.PreencheGrid(dgMedicos);
+                    pacienteDB.PreencheGrid(dgPacientes);
                 }
             }
         }
 
         private void frmPacientes_Load(object sender, EventArgs e)
         {
-            dgMedicos.Columns.Add("CPF", "CPF:");
-            dgMedicos.Columns.Add("Nome", "Nome:");
-            dgMedicos.Columns.Add("DataNascimento", "Dt.Nasc:");
-            dgMedicos.Columns.Add("Sexo", "Sexo:");
+            dgPacientes.Columns.Add("CPF", "CPF:");
+            dgPacientes.Columns.Add("Nome", "Nome:");
+            dgPacientes.Columns.Add("DataNascimento", "Dt.Nasc:");
+            dgPacientes.Columns.Add("Sexo", "Sexo:");
 
-            dgMedicos.Columns[0].Width = 80;
-            dgMedicos.Columns[1].Width = 320;
-            dgMedicos.Columns[2].Width = 100;
-            dgMedicos.Columns[3].Width = 80;
+            dgPacientes.Columns[0].Width = 80;
+            dgPacientes.Columns[1].Width = 320;
+            dgPacientes.Columns[2].Width = 100;
+            dgPacientes.Columns[3].Width = 80;
 
-            pacienteDB.PreencheGrid(dgMedicos);
+            pacienteDB.PreencheGrid(dgPacientes);
         }
 
         private void dgMedicos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgMedicos.CurrentRow.Index < 0)
+            if (dgPacientes.CurrentRow.Index < 0)
             {
 
             }
             else
             {
-                txtcpf.Text = dgMedicos[0, dgMedicos.CurrentRow.Index].Value.ToString();
-                dtpdata.Text = dgMedicos[2, dgMedicos.CurrentRow.Index].Value.ToString();
-                txtnome.Text = dgMedicos[1, dgMedicos.CurrentRow.Index].Value.ToString();
-                cbSexo.Text = dgMedicos[3, dgMedicos.CurrentRow.Index].Value.ToString();
+                txtcpf.Text = dgPacientes[0, dgPacientes.CurrentRow.Index].Value.ToString();
+                dtpdata.Text = dgPacientes[2, dgPacientes.CurrentRow.Index].Value.ToString();
+                txtnome.Text = dgPacientes[1, dgPacientes.CurrentRow.Index].Value.ToString();
+                cbSexo.Text = dgPacientes[3, dgPacientes.CurrentRow.Index].Value.ToString();
             }
         }
     }

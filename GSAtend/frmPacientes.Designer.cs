@@ -38,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtcpf = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgMedicos = new System.Windows.Forms.DataGridView();
+            this.dgPacientes = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -48,7 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgMedicos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPacientes)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -144,27 +144,27 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dgMedicos);
+            this.groupBox2.Controls.Add(this.dgPacientes);
             this.groupBox2.Location = new System.Drawing.Point(4, 137);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(652, 195);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
-            // dgMedicos
+            // dgPacientes
             // 
-            this.dgMedicos.AllowUserToAddRows = false;
-            this.dgMedicos.AllowUserToDeleteRows = false;
-            this.dgMedicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgMedicos.Location = new System.Drawing.Point(5, 14);
-            this.dgMedicos.MultiSelect = false;
-            this.dgMedicos.Name = "dgMedicos";
-            this.dgMedicos.ReadOnly = true;
-            this.dgMedicos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgMedicos.Size = new System.Drawing.Size(640, 174);
-            this.dgMedicos.TabIndex = 0;
-            this.dgMedicos.Text = "dataGridView1";
-            this.dgMedicos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMedicos_CellDoubleClick);
+            this.dgPacientes.AllowUserToAddRows = false;
+            this.dgPacientes.AllowUserToDeleteRows = false;
+            this.dgPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPacientes.Location = new System.Drawing.Point(5, 14);
+            this.dgPacientes.MultiSelect = false;
+            this.dgPacientes.Name = "dgPacientes";
+            this.dgPacientes.ReadOnly = true;
+            this.dgPacientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgPacientes.Size = new System.Drawing.Size(640, 174);
+            this.dgPacientes.TabIndex = 0;
+            this.dgPacientes.Text = "dataGridView1";
+            this.dgPacientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMedicos_CellDoubleClick);
             // 
             // groupBox3
             // 
@@ -255,7 +255,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgMedicos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPacientes)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -275,7 +275,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox txtcpf;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dgMedicos;
+        private System.Windows.Forms.DataGridView dgPacientes;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
