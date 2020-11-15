@@ -47,6 +47,37 @@ namespace GSAtend
                     txtcpf.Focus();
                 }
             }
-        }        
+        }
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            if ((txtcpf.Text != "   .   .   -") && (txtnome.Text != "") && (txtdescricao.Text != ""))
+            {
+                atendimento.Id = txtId.Text == "" ? 0 : Convert.ToInt32(txtId.Text);
+                atendimento.DataAtendimento = dtData.Value;
+                atendimento.DescricaoAtendimento = txtdescricao.Text;
+                paciente.CPF = Cpf.RemoveMask(txtcpf.Text);
+                paciente.Nome = txtnome.Text;
+                atendimento.Paciente = paciente;
+                atendimentoDB.Add(atendimento);
+                atendimentoDB.PreencheGrid(dgAtendimentos, paciente.CPF);
+                txtId.Text = "";
+                txtdescricao.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Favor preencher todos os campos!!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            txtcpf.Text = "";
+            txtnome.Text = "";
+            dtData.Value = DateTime.Today;
+            txtId.Text = "";
+            txtdescricao.Text = "";
+            dgAtendimentos.Rows.Clear();
+            txtcpf.Focus();
+        }
     }
 }
