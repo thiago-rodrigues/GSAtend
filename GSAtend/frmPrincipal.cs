@@ -24,5 +24,16 @@ namespace GSAtend
         {
 
         }
+        private void mnuPaciente_Click(object sender, EventArgs e)
+        {
+            frmPacientes formPaciente = new frmPacientes();
+            formPaciente.ShowDialog(this);
+        }
+
+        private void mnuAtendimento_Click(object sender, EventArgs e)
+        {
+            frmAtendimentos formAtendimentos = new frmAtendimentos();
+            formAtendimentos.ShowDialog(this);
+        }        
     }
 }

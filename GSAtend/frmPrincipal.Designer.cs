@@ -31,9 +31,9 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCadastro = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPaciente = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAtendimento = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3});
+            this.mnuCadastro});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -62,26 +62,32 @@
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
-            // toolStripMenuItem3
+            // mnuCadastro
             // 
-            this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5});
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(71, 20);
-            this.toolStripMenuItem3.Text = "&Cadastros";
+            this.mnuCadastro.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuPaciente,
+            this.mnuAtendimento});
+            this.mnuCadastro.Name = "mnuCadastro";
+            this.mnuCadastro.Size = new System.Drawing.Size(71, 20);
+            this.mnuCadastro.Text = "&Cadastros";
             // 
-            // toolStripMenuItem4
+            // mnuPaciente
             // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 22);
-            this.toolStripMenuItem4.Text = "&Pacientes";
+            this.mnuPaciente.AutoToolTip = true;
+            this.mnuPaciente.Name = "mnuPaciente";
+            this.mnuPaciente.Size = new System.Drawing.Size(149, 22);
+            this.mnuPaciente.Text = "&Pacientes";
+            this.mnuPaciente.ToolTipText = "Cadastro de Pacientes";
+            this.mnuPaciente.Click += new System.EventHandler(this.mnuPaciente_Click);
             // 
-            // toolStripMenuItem5
+            // mnuAtendimento
             // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(149, 22);
-            this.toolStripMenuItem5.Text = "&Atendimentos";
+            this.mnuAtendimento.AutoToolTip = true;
+            this.mnuAtendimento.Name = "mnuAtendimento";
+            this.mnuAtendimento.Size = new System.Drawing.Size(149, 22);
+            this.mnuAtendimento.Text = "&Atendimentos";
+            this.mnuAtendimento.ToolTipText = "Cadastro de Atendimentos";
+            this.mnuAtendimento.Click += new System.EventHandler(this.mnuAtendimento_Click);
             // 
             // frmPrincipal
             // 
@@ -105,9 +111,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem mnuCadastro;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem mnuPaciente;
+        private System.Windows.Forms.ToolStripMenuItem mnuAtendimento;
     }
 }
 
