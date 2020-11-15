@@ -8,5 +8,11 @@ Projeto Processo Seletivo GrupoSym
 03. [Sirb.Validation 1.0.2](https://www.nuget.org/packages/Sirb.Validation)
 
 
+# Instruções para execução
 
+```
+01. Execute o script sql "CriaDB.sql"
+02. Modifique a string de conexão continda no "App.config"
+
+```
 
