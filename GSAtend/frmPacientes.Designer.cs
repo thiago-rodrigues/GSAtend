@@ -164,6 +164,7 @@
             this.dgMedicos.Size = new System.Drawing.Size(640, 174);
             this.dgMedicos.TabIndex = 0;
             this.dgMedicos.Text = "dataGridView1";
+            this.dgMedicos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMedicos_CellDoubleClick);
             // 
             // groupBox3
             // 

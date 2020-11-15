@@ -106,5 +106,19 @@ namespace GSAtend
             pacienteDB.PreencheGrid(dgMedicos);
         }
 
+        private void dgMedicos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgMedicos.CurrentRow.Index < 0)
+            {
+
+            }
+            else
+            {
+                txtcpf.Text = dgMedicos[0, dgMedicos.CurrentRow.Index].Value.ToString();
+                dtpdata.Text = dgMedicos[2, dgMedicos.CurrentRow.Index].Value.ToString();
+                txtnome.Text = dgMedicos[1, dgMedicos.CurrentRow.Index].Value.ToString();
+                cbSexo.Text = dgMedicos[3, dgMedicos.CurrentRow.Index].Value.ToString();
+            }
+        }
     }
 }
